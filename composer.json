@@ -5,7 +5,7 @@
   "version": "1.0",
   "keywords": ["mautic","plugin","integration"],
   "extra": {
-    "install-directory-name": "MauticCRMBundle"
+    "install-directory-name": "MauticCrmBundle"
   },
   "minimum-stability": "dev"
 }
