@@ -1,5 +1,5 @@
 {
-  "name": "mautic/crm",
+  "name": "mautic/plugin-crm",
   "description": "CRM Plugin",
   "type": "mautic-plugin",
   "version": "1.0",
