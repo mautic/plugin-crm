@@ -7,5 +7,9 @@
   "extra": {
     "install-directory-name": "MauticCrmBundle"
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.4.0 <8.1",
+    "mautic/core-lib": "^4.0"
+  }
 }
