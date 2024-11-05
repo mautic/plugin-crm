@@ -525,7 +525,7 @@ class HubspotIntegration extends CrmAbstractIntegration
                         $this->translator->trans(
                             'mautic.stage.import.action.name',
                             [
-                                '%name%' => $this->userHelper->getUser()->getUsername(),
+                                '%name%' => $this->userHelper->getUser()->getUserIdentifier(),
                             ]
                         )
                     );
