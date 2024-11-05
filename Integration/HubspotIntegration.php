@@ -27,7 +27,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -42,7 +41,6 @@ class HubspotIntegration extends CrmAbstractIntegration
         EventDispatcherInterface $eventDispatcher,
         CacheStorageHelper $cacheStorageHelper,
         EntityManager $entityManager,
-        SessionInterface $session,
         RequestStack $requestStack,
         RouterInterface $router,
         TranslatorInterface $translator,
@@ -62,7 +60,6 @@ class HubspotIntegration extends CrmAbstractIntegration
             $eventDispatcher,
             $cacheStorageHelper,
             $entityManager,
-            $session,
             $requestStack,
             $router,
             $translator,

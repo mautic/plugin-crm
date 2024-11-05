@@ -595,8 +595,8 @@ class ZohoIntegration extends CrmAbstractIntegration
                 $url .= '&scope='.urlencode($scope);
             }
 
-            if ($this->session) {
-                $this->session->set($this->getName().'_csrf_token', $state);
+            if ($this->requestStack->getCurrentRequest()->hasSession()) {
+                $this->requestStack->getSession()->set($this->getName().'_csrf_token', $state);
             }
 
             return $url;

@@ -25,8 +25,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -54,7 +52,6 @@ class SugarcrmIntegration extends CrmAbstractIntegration
         EventDispatcherInterface $eventDispatcher,
         CacheStorageHelper $cacheStorageHelper,
         EntityManager $entityManager,
-        SessionInterface $session,
         RequestStack $requestStack,
         RouterInterface $router,
         TranslatorInterface $translator,
@@ -74,7 +71,6 @@ class SugarcrmIntegration extends CrmAbstractIntegration
             $eventDispatcher,
             $cacheStorageHelper,
             $entityManager,
-            $session,
             $requestStack,
             $router,
             $translator,
