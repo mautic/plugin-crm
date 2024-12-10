@@ -2510,11 +2510,9 @@ class SalesforceIntegration extends CrmAbstractIntegration
      * @param string $sfObject
      * @param string $sfFieldString
      *
-     * @return mixed
-     *
      * @throws ApiErrorException
      */
-    public function getDncHistory($sfObject, $sfFieldString)
+    public function getDncHistory($sfObject, $sfFieldString): mixed
     {
         return $this->getDoNotContactHistory($sfObject, $sfFieldString, 'DESC');
     }
