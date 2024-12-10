@@ -8,12 +8,12 @@ use MauticPlugin\MauticCrmBundle\Integration\Salesforce\Object\Lead;
 class Organizer
 {
     /**
-     * @var array<int, Lead>
+     * @var array<string, Lead>
      */
     private array $leads = [];
 
     /**
-     * @var array<int, Contact>
+     * @var array<string, Contact>
      */
     private array $contacts = [];
 
@@ -24,7 +24,7 @@ class Organizer
     }
 
     /**
-     * @return array<int, Lead>
+     * @return array<string, Lead>
      */
     public function getLeads()
     {
@@ -32,7 +32,7 @@ class Organizer
     }
 
     /**
-     * @return array<int, int>
+     * @return array<int, string>
      */
     public function getLeadIds(): array
     {
@@ -40,7 +40,7 @@ class Organizer
     }
 
     /**
-     * @return array<int, Contact>
+     * @return array<string, Contact>
      */
     public function getContacts()
     {
@@ -48,7 +48,7 @@ class Organizer
     }
 
     /**
-     * @return array<int, int>
+     * @return array<int, string>
      */
     public function getContactIds(): array
     {

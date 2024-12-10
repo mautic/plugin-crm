@@ -816,6 +816,7 @@ class ZohoIntegration extends CrmAbstractIntegration
             $integrationEntityRepo->findLeadsToUpdate('Zoho', 'lead', $fields, 0, $params['start'], $params['end'], ['Contacts', 'Leads'])
         );
         $totalToCreate = $integrationEntityRepo->findLeadsToCreate('Zoho', $fields, 0, $params['start'], $params['end']);
+        $totalToCreate = is_array($totalToCreate) ? count($totalToCreate) : (int) $totalToCreate;
         $totalCount    = $totalToCreate + $totalToUpdate;
 
         if (defined('IN_MAUTIC_CONSOLE')) {
