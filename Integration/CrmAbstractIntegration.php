@@ -32,7 +32,7 @@ abstract class CrmAbstractIntegration extends AbstractIntegration
 
     protected $helper;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, CacheStorageHelper $cacheStorageHelper, EntityManager $entityManager, RequestStack $requestStack, RouterInterface $router, TranslatorInterface $translator, LoggerInterface $logger, EncryptionHelper $encryptionHelper, LeadModel $leadModel, CompanyModel $companyModel, PathsHelper $pathsHelper, NotificationModel $notificationModel, FieldModel $fieldModel, IntegrationEntityModel $integrationEntityModel, DoNotContactModel $doNotContact, private FieldsWithUniqueIdentifier $fieldsWithUniqueIdentifier)
+    public function __construct(EventDispatcherInterface $eventDispatcher, CacheStorageHelper $cacheStorageHelper, EntityManager $entityManager, RequestStack $requestStack, RouterInterface $router, TranslatorInterface $translator, LoggerInterface $logger, EncryptionHelper $encryptionHelper, LeadModel $leadModel, CompanyModel $companyModel, PathsHelper $pathsHelper, NotificationModel $notificationModel, FieldModel $fieldModel, IntegrationEntityModel $integrationEntityModel, DoNotContactModel $doNotContact, protected FieldsWithUniqueIdentifier $fieldsWithUniqueIdentifier)
     {
         parent::__construct($eventDispatcher, $cacheStorageHelper, $entityManager, $requestStack, $router, $translator, $logger, $encryptionHelper, $leadModel, $companyModel, $pathsHelper, $notificationModel, $fieldModel, $integrationEntityModel, $doNotContact, $fieldsWithUniqueIdentifier);
     }
