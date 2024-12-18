@@ -20,6 +20,10 @@ class IntegrationCampaignsTaskType extends AbstractType
     ) {
     }
 
+    /**
+     * @param FormBuilderInterface<array<mixed>|null> $builder
+     * @param array<string, mixed>                    $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
