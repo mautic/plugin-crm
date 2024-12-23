@@ -2,33 +2,33 @@
 
 namespace MauticPlugin\MauticCrmBundle\Integration;
 
-use Psr\Log\LoggerInterface;
 use Doctrine\ORM\EntityManager;
-use Mautic\LeadBundle\Entity\Lead;
-use Mautic\StageBundle\Entity\Stage;
-use Mautic\LeadBundle\Model\LeadModel;
-use Mautic\LeadBundle\Model\FieldModel;
-use Mautic\CoreBundle\Helper\UserHelper;
 use Mautic\CoreBundle\Helper\ArrayHelper;
+use Mautic\CoreBundle\Helper\CacheStorageHelper;
+use Mautic\CoreBundle\Helper\EncryptionHelper;
 use Mautic\CoreBundle\Helper\PathsHelper;
+use Mautic\CoreBundle\Helper\UserHelper;
+use Mautic\CoreBundle\Model\NotificationModel;
+use Mautic\LeadBundle\DataObject\LeadManipulator;
+use Mautic\LeadBundle\Entity\Lead;
+use Mautic\LeadBundle\Entity\StagesChangeLog;
+use Mautic\LeadBundle\Field\FieldsWithUniqueIdentifier;
 use Mautic\LeadBundle\Model\CompanyModel;
 use Mautic\LeadBundle\Model\DoNotContact;
-use Mautic\LeadBundle\Entity\StagesChangeLog;
-use Mautic\CoreBundle\Helper\EncryptionHelper;
-use Mautic\CoreBundle\Model\NotificationModel;
-use Symfony\Component\Routing\RouterInterface;
-use Mautic\CoreBundle\Helper\CacheStorageHelper;
-use MauticPlugin\MauticCrmBundle\Api\HubspotApi;
-use Symfony\Component\Form\FormBuilderInterface;
-use Mautic\LeadBundle\DataObject\LeadManipulator;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Mautic\PluginBundle\Model\IntegrationEntityModel;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Mautic\LeadBundle\Field\FieldsWithUniqueIdentifier;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Mautic\LeadBundle\Model\FieldModel;
+use Mautic\LeadBundle\Model\LeadModel;
 use Mautic\PluginBundle\Entity\IntegrationEntityRepository;
+use Mautic\PluginBundle\Model\IntegrationEntityModel;
+use Mautic\StageBundle\Entity\Stage;
+use MauticPlugin\MauticCrmBundle\Api\HubspotApi;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @method HubspotApi getApiHelper()

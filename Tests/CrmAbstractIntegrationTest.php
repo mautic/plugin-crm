@@ -3,11 +3,11 @@
 namespace MauticPlugin\MauticCrmBundle\Tests;
 
 use Mautic\EmailBundle\Helper\EmailValidator;
-use PHPUnit\Framework\MockObject\MockBuilder;
 use Mautic\LeadBundle\Deduplicate\CompanyDeduper;
-use MauticPlugin\MauticCrmBundle\Tests\Stubs\StubIntegration;
 use Mautic\PluginBundle\Tests\Integration\AbstractIntegrationTestCase;
 use MauticPlugin\MauticCrmBundle\Tests\Fixtures\Model\CompanyModelStub;
+use MauticPlugin\MauticCrmBundle\Tests\Stubs\StubIntegration;
+use PHPUnit\Framework\MockObject\MockBuilder;
 
 class CrmAbstractIntegrationTest extends AbstractIntegrationTestCase
 {
