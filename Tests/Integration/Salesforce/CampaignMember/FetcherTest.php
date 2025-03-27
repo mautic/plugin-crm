@@ -17,14 +17,36 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
         $repo      = $this->getMockBuilder(IntegrationEntityRepository::class)
             ->disableOriginalConstructor()
             ->getMock();
+        $matcher = $this->exactly(2);
 
-        $repo->expects($this->exactly(2))
-            ->method('getIntegrationsEntityId')
-            ->withConsecutive(
-                ['Salesforce', Lead::OBJECT, 'lead', null, null, null, false, 0, 0, $organizer->getLeadIds()],
-                ['Salesforce', Contact::OBJECT, 'lead', null, null, null, false, 0, 0, $organizer->getContactIds()]
-            )
-            ->willReturn([]);
+        $repo->expects($matcher)
+            ->method('getIntegrationsEntityId')->willReturnCallback(function (...$parameters) use ($matcher, $organizer) {
+            if ($matcher->getInvocationCount() === 1) {
+                $this->assertSame('Salesforce', $parameters[0]);
+                $this->assertSame(Lead::OBJECT, $parameters[1]);
+                $this->assertSame('lead', $parameters[2]);
+                $this->assertSame(null, $parameters[3]);
+                $this->assertSame(null, $parameters[4]);
+                $this->assertSame(null, $parameters[5]);
+                $this->assertSame(false, $parameters[6]);
+                $this->assertSame(0, $parameters[7]);
+                $this->assertSame(0, $parameters[8]);
+                $this->assertSame($organizer->getLeadIds(), $parameters[9]);
+            }
+            if ($matcher->getInvocationCount() === 2) {
+                $this->assertSame('Salesforce', $parameters[0]);
+                $this->assertSame(Contact::OBJECT, $parameters[1]);
+                $this->assertSame('lead', $parameters[2]);
+                $this->assertSame(null, $parameters[3]);
+                $this->assertSame(null, $parameters[4]);
+                $this->assertSame(null, $parameters[5]);
+                $this->assertSame(false, $parameters[6]);
+                $this->assertSame(0, $parameters[7]);
+                $this->assertSame(0, $parameters[8]);
+                $this->assertSame($organizer->getContactIds(), $parameters[9]);
+            }
+            return [];
+        });
 
         new Fetcher($repo, $organizer, '701f10000021UnkAAE');
     }
@@ -35,17 +57,22 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
         $repo      = $this->getMockBuilder(IntegrationEntityRepository::class)
             ->disableOriginalConstructor()
             ->getMock();
+        $matcher = $this->exactly(4);
 
-        $repo->expects($this->exactly(4))
-            ->method('getIntegrationsEntityId')
-            ->withConsecutive(
-                ['Salesforce', Lead::OBJECT, 'lead', null, null, null, false, 0, 0, $organizer->getLeadIds()],
-                ['Salesforce', Contact::OBJECT, 'lead', null, null, null, false, 0, 0, $organizer->getContactIds()],
-                ['Salesforce', CampaignMember::OBJECT, 'lead', [1, 2, 3, 4, 5, 6], null, null, false, 0, 0, '701f10000021UnkAAE'],
-                ['Salesforce', null, 'lead', null, null, null, false, 0, 0, ['00Qf100000YjYv4EAF', '00Qf100000YjYv9EAF', '00Qf100000YjYvTEAV', '00Qf100000X1NR5EAN']]
-            )
-            ->willReturnOnConsecutiveCalls(
-                [
+        $repo->expects($matcher)
+            ->method('getIntegrationsEntityId')->willReturnCallback(function (...$parameters) use ($matcher, $organizer) {
+            if ($matcher->getInvocationCount() === 1) {
+                $this->assertSame('Salesforce', $parameters[0]);
+                $this->assertSame(Lead::OBJECT, $parameters[1]);
+                $this->assertSame('lead', $parameters[2]);
+                $this->assertSame(null, $parameters[3]);
+                $this->assertSame(null, $parameters[4]);
+                $this->assertSame(null, $parameters[5]);
+                $this->assertSame(false, $parameters[6]);
+                $this->assertSame(0, $parameters[7]);
+                $this->assertSame(0, $parameters[8]);
+                $this->assertSame($organizer->getLeadIds(), $parameters[9]);
+                return [
                     [
                         'integration_entity_id' => '00Qf100000YjYvEEAV',
                         'internal_entity_id'    => 1,
@@ -58,8 +85,20 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
                         'integration_entity_id' => '00Qf100000YjYvOEAV',
                         'internal_entity_id'    => 3,
                     ],
-                ],
-                [
+                ];
+            }
+            if ($matcher->getInvocationCount() === 2) {
+                $this->assertSame('Salesforce', $parameters[0]);
+                $this->assertSame(Contact::OBJECT, $parameters[1]);
+                $this->assertSame('lead', $parameters[2]);
+                $this->assertSame(null, $parameters[3]);
+                $this->assertSame(null, $parameters[4]);
+                $this->assertSame(null, $parameters[5]);
+                $this->assertSame(false, $parameters[6]);
+                $this->assertSame(0, $parameters[7]);
+                $this->assertSame(0, $parameters[8]);
+                $this->assertSame($organizer->getContactIds(), $parameters[9]);
+                return [
                     [
                         'integration_entity_id' => '00Qf100000YjYvYEAV',
                         'internal_entity_id'    => 4,
@@ -72,8 +111,20 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
                         'integration_entity_id' => '00Qf100000YjYviEAF',
                         'internal_entity_id'    => 6,
                     ],
-                ],
-                [
+                ];
+            }
+            if ($matcher->getInvocationCount() === 3) {
+                $this->assertSame('Salesforce', $parameters[0]);
+                $this->assertSame(CampaignMember::OBJECT, $parameters[1]);
+                $this->assertSame('lead', $parameters[2]);
+                $this->assertSame([1, 2, 3, 4, 5, 6], $parameters[3]);
+                $this->assertSame(null, $parameters[4]);
+                $this->assertSame(null, $parameters[5]);
+                $this->assertSame(false, $parameters[6]);
+                $this->assertSame(0, $parameters[7]);
+                $this->assertSame(0, $parameters[8]);
+                $this->assertSame('701f10000021UnkAAE', $parameters[9]);
+                return [
                     [
                         'integration_entity'    => CampaignMember::OBJECT,
                         'integration_entity_id' => '701f10000021UnkAAE',
@@ -84,8 +135,20 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
                         'integration_entity_id' => '701f10000021UnkAAE',
                         'internal_entity_id'    => 4,
                     ],
-                ],
-                [
+                ];
+            }
+            if ($matcher->getInvocationCount() === 4) {
+                $this->assertSame('Salesforce', $parameters[0]);
+                $this->assertSame(null, $parameters[1]);
+                $this->assertSame('lead', $parameters[2]);
+                $this->assertSame(null, $parameters[3]);
+                $this->assertSame(null, $parameters[4]);
+                $this->assertSame(null, $parameters[5]);
+                $this->assertSame(false, $parameters[6]);
+                $this->assertSame(0, $parameters[7]);
+                $this->assertSame(0, $parameters[8]);
+                $this->assertSame(['00Qf100000YjYv4EAF', '00Qf100000YjYv9EAF', '00Qf100000YjYvTEAV', '00Qf100000X1NR5EAN'], $parameters[9]);
+                return [
                     [
                         'integration_entity_id' => '00Qf100000YjYv4EAF',
                         'internal_entity_id'    => 7,
@@ -102,8 +165,9 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
                         'integration_entity_id' => '00Qf100000X1NR5EAN',
                         'internal_entity_id'    => 10,
                     ],
-                ]
-            );
+                ];
+            }
+        });
 
         $fetcher = new Fetcher($repo, $organizer, '701f10000021UnkAAE');
 
