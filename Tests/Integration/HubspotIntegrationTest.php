@@ -190,7 +190,7 @@ class HubspotIntegrationTest extends AbstractIntegrationTestCase
                 $this->assertSame($this->integration->getApiKey(), $parameters[0]);
                 $this->assertSame(TextType::class, $parameters[1]);
             }
-        });
+        })->willReturnSelf();
 
         $this->integration->appendToForm($builder, [], 'keys');
     }
