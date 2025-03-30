@@ -741,9 +741,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
 
     protected function setMocks()
     {
-        $integrationEntityRepository = $this->getMockBuilder(IntegrationEntityRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $integrationEntityRepository = $this->createMock(IntegrationEntityRepository::class);
 
         // we need insight into the entities persisted
         $integrationEntityRepository->method('saveEntities')
@@ -771,9 +769,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
                     return $this->getLeadsToUpdate('Lead', 2, 2, 'Lead')['Lead'];
                 }
             );
-        $auditLogRepo = $this->getMockBuilder(AuditLogRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $auditLogRepo = $this->createMock(AuditLogRepository::class);
 
         $auditLogRepo
             ->expects($this->any())
@@ -979,9 +975,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
                 ]
             );
 
-        $integrationEntityModelMock = $this->getMockBuilder(IntegrationEntityModel::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $integrationEntityModelMock = $this->createMock(IntegrationEntityModel::class);
 
         $integrationEntityModelMock->method('getEntityByIdAndSetSyncDate')
             ->willReturn(new IntegrationEntity());

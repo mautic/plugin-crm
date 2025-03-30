@@ -14,9 +14,7 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
     public function testEntitiesAreFetchedFromOrganizerResults(): void
     {
         $organizer = $this->getOrgnanizer();
-        $repo      = $this->getMockBuilder(IntegrationEntityRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $repo      = $this->createMock(IntegrationEntityRepository::class);
         $matcher = $this->exactly(2);
 
         $repo->expects($matcher)
@@ -55,9 +53,7 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
     public function testThatCampaignMembersAreFetched(): void
     {
         $organizer = $this->getOrgnanizer();
-        $repo      = $this->getMockBuilder(IntegrationEntityRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $repo      = $this->createMock(IntegrationEntityRepository::class);
         $matcher = $this->exactly(4);
 
         $repo->expects($matcher)
