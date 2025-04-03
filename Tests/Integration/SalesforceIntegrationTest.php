@@ -1009,12 +1009,12 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
                             } elseif (isset($args[1]['q']) && str_contains($args[1]['q'], 'from Campaign')) {
                                 return [
                                     'totalSize' => 0,
-                                    'records' => [],
+                                    'records'   => [],
                                 ];
                             } elseif (isset($args[1]['q']) && str_contains($args[1]['q'], 'from Account')) {
                                 return [
                                     'totalSize' => 0,
-                                    'records' => [],
+                                    'records'   => [],
                                 ];
                             } elseif (isset($args[1]['q']) && 'SELECT CreatedDate from Organization' === $args[1]['q']) {
                                 return [
@@ -1022,7 +1022,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
                                         ['CreatedDate' => '2012-10-30T17:56:50.000+0000'],
                                     ],
                                 ];
-                            } elseif (isset($args[1]['q']) && str_contains($args[1]['q'], 'from ' . $updateObject . 'History')) {
+                            } elseif (isset($args[1]['q']) && str_contains($args[1]['q'], 'from '.$updateObject.'History')) {
                                 return $this->getSalesforceDNCHistory($updateObject, 'Mautic');
                             } else {
                                 // Extract emails
@@ -1035,7 +1035,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
                                     return $this->getSalesforceObjects([], $maxSfContacts, $maxSfLeads);
                                 }
                             }
-                        // no break
+                            // no break
                         case str_contains($args[0], '/composite'):
                             return $this->getSalesforceCompositeResponse($args[1]);
                     }

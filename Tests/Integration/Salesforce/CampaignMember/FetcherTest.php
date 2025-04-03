@@ -15,7 +15,7 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
     {
         $organizer = $this->getOrgnanizer();
         $repo      = $this->createMock(IntegrationEntityRepository::class);
-        $matcher = $this->exactly(2);
+        $matcher   = $this->exactly(2);
 
         $repo->expects($matcher)
             ->method('getIntegrationsEntityId')->willReturnCallback(function (...$parameters) use ($matcher, $organizer) {
@@ -54,7 +54,7 @@ class FetcherTest extends \PHPUnit\Framework\TestCase
     {
         $organizer = $this->getOrgnanizer();
         $repo      = $this->createMock(IntegrationEntityRepository::class);
-        $matcher = $this->exactly(4);
+        $matcher   = $this->exactly(4);
 
         $repo->expects($matcher)
             ->method('getIntegrationsEntityId')->willReturnCallback(function (...$parameters) use ($matcher, $organizer) {
