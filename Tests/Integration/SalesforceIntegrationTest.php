@@ -994,7 +994,6 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
                 $this->fieldsWithUniqueIdentifier,
             ])
             ->onlyMethods($this->sfMockMethods)
-            ->addMethods(['findLeadsToCreate'])
             ->getMock();
 
         $sf->method('makeRequest')
