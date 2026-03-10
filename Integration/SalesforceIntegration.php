@@ -462,7 +462,7 @@ class SalesforceIntegration extends CrmAbstractIntegration
                         // Persist integration entities
                         $this->buildIntegrationEntities($integrationMapping, $object, $mauticObjectReference, $params);
                         $counter = 0;
-                        $this->em->detach($entity);
+                        $this->em->clear($detachClass);
                         $integrationMapping = [];
                     }
                 }
@@ -471,7 +471,7 @@ class SalesforceIntegration extends CrmAbstractIntegration
             if (count($integrationMapping)) {
                 // Persist integration entities
                 $this->buildIntegrationEntities($integrationMapping, $object, $mauticObjectReference, $params);
-                $this->em->detach($entity);
+                $this->em->clear($detachClass);
             }
 
             foreach ($DNCUpdates as $objectName => $sfEntity) {
@@ -1428,7 +1428,7 @@ class SalesforceIntegration extends CrmAbstractIntegration
                     if (20 === $counter) {
                         // Batch to control RAM use
                         $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->saveEntities($persistEntities);
-                        $this->integrationEntityModel->getRepository()->detachEntities($persistEntities);
+                        $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->detachEntities($persistEntities);
                         $persistEntities = [];
                         $counter         = 0;
                     }
@@ -1437,7 +1437,7 @@ class SalesforceIntegration extends CrmAbstractIntegration
                 // Catch left overs
                 if ($persistEntities) {
                     $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->saveEntities($persistEntities);
-                    $this->integrationEntityModel->getRepository()->detachEntities($persistEntities);
+                    $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->detachEntities($persistEntities);
                 }
 
                 unset($unknownMembers, $fetcher, $organizer, $persistEntities);
