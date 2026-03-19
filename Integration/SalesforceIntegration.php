@@ -1427,8 +1427,8 @@ class SalesforceIntegration extends CrmAbstractIntegration
 
                     if (20 === $counter) {
                         // Batch to control RAM use
-                        $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->saveEntities($persistEntities);
-                        $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->detachEntities($persistEntities);
+                        $integrationEntityRepo->saveEntities($persistEntities);
+                        $integrationEntityRepo->detachEntities($persistEntities);
                         $persistEntities = [];
                         $counter         = 0;
                     }
@@ -1436,8 +1436,8 @@ class SalesforceIntegration extends CrmAbstractIntegration
 
                 // Catch left overs
                 if ($persistEntities) {
-                    $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->saveEntities($persistEntities);
-                    $this->em->getRepository(\Mautic\PluginBundle\Entity\IntegrationEntity::class)->detachEntities($persistEntities);
+                    $integrationEntityRepo->saveEntities($persistEntities);
+                    $integrationEntityRepo->detachEntities($persistEntities);
                 }
 
                 unset($unknownMembers, $fetcher, $organizer, $persistEntities);
