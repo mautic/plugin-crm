@@ -462,7 +462,9 @@ class SalesforceIntegration extends CrmAbstractIntegration
                         // Persist integration entities
                         $this->buildIntegrationEntities($integrationMapping, $object, $mauticObjectReference, $params);
                         $counter = 0;
-                        $this->em->clear($detachClass);
+                        foreach ($integrationMapping as $mapping) {
+                            $this->em->detach($mapping['entity']);
+                        }
                         $integrationMapping = [];
                     }
                 }
@@ -471,7 +473,9 @@ class SalesforceIntegration extends CrmAbstractIntegration
             if (count($integrationMapping)) {
                 // Persist integration entities
                 $this->buildIntegrationEntities($integrationMapping, $object, $mauticObjectReference, $params);
-                $this->em->clear($detachClass);
+                foreach ($integrationMapping as $mapping) {
+                    $this->em->detach($mapping['entity']);
+                }
             }
 
             foreach ($DNCUpdates as $objectName => $sfEntity) {
