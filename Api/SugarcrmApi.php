@@ -533,7 +533,7 @@ class SugarcrmApi extends CrmApi
         return $res;
     }
 
-    public function getIdBySugarEmail($query = null)
+    public function getIdBySugarEmail($query = null): array
     {
         if (null == $query) {
             $query = ['type' => 'BYEMAIL'];
