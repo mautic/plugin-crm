@@ -192,11 +192,9 @@ class SugarcrmApi extends CrmApi
     }
 
     /**
-     * @return array
-     *
      * @throws ApiErrorException
      */
-    public function syncLeadsToSugar(array $data)
+    public function syncLeadsToSugar(array $data): array
     {
         $tokenData = $this->integration->getKeys();
         $object    = $this->object;
@@ -240,8 +238,6 @@ class SugarcrmApi extends CrmApi
         }
         $leadFieldsList = [];
         $response       = [];
-        // body is prepared for Sugar6. Translate it to sugar 7
-        $reference_ids = [];
         foreach ($data as $object => $leadFieldsList) {
             $requests = [];
             $all_ids  = [];
@@ -428,7 +424,10 @@ class SugarcrmApi extends CrmApi
         }
     }
 
-    public function getEmailBySugarUserId($query = null)
+    /**
+     * @return mixed[]
+     */
+    public function getEmailBySugarUserId($query = null): array
     {
         $tokenData = $this->integration->getKeys();
         if ('6' == $tokenData['version']) {
