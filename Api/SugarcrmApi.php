@@ -533,6 +533,9 @@ class SugarcrmApi extends CrmApi
         return $res;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getIdBySugarEmail($query = null): array
     {
         if (null == $query) {
