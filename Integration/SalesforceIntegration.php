@@ -831,7 +831,7 @@ class SalesforceIntegration extends CrmAbstractIntegration
                 }
 
                 // Return success if any company was updated or created
-                return ($companyFound) ? $companies : false;
+                return $companies;
             }
         } catch (\Exception $e) {
             $this->logIntegrationError($e);
