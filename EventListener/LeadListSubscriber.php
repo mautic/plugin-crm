@@ -89,7 +89,7 @@ class LeadListSubscriber implements EventSubscriberInterface
         // get Integration Campaign members
         $list    = $event->getList();
         $success = false;
-        $filters = ($list instanceof LeadList) ? $list->getFilters() : $list['filters'];
+        $filters = $list['filters'];
 
         foreach ($filters as $filter) {
             if ('integration_campaigns' == $filter['field']) {
