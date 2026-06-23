@@ -2827,7 +2827,7 @@ class SalesforceIntegration extends CrmAbstractIntegration
         $totalIgnored = $totalToProcess - ($totalUpdated + $totalCreated + $totalErrors);
 
         if ($totalIgnored < 0) { // this could have been marked as deleted so it was not pushed
-            $totalIgnored = $totalIgnored * -1;
+            $totalIgnored *= -1;
         }
 
         return [$totalUpdated, $totalCreated, $totalErrors, $totalIgnored];
