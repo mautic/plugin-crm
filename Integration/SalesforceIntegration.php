@@ -199,13 +199,11 @@ class SalesforceIntegration extends CrmAbstractIntegration
     }
 
     /**
-     * @param array $settings
-     *
      * @return mixed[]
      *
      * @throws InvalidArgumentException
      */
-    public function getAvailableLeadFields($settings = []): array
+    public function getAvailableLeadFields(array $settings = []): array
     {
         $silenceExceptions = $settings['silence_exceptions'] ?? true;
         $salesForceObjects = [];

@@ -256,11 +256,9 @@ class SugarcrmIntegration extends CrmAbstractIntegration
     }
 
     /**
-     * @param array $settings
-     *
      * @throws \Exception
      */
-    public function getAvailableLeadFields($settings = []): array
+    public function getAvailableLeadFields(array $settings = []): array
     {
         $sugarFields       = [];
         $silenceExceptions = $settings['silence_exceptions'] ?? true;
