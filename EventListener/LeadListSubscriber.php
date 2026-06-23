@@ -2,7 +2,6 @@
 
 namespace MauticPlugin\MauticCrmBundle\EventListener;
 
-use Mautic\LeadBundle\Entity\LeadList;
 use Mautic\LeadBundle\Event\LeadListFiltersChoicesEvent;
 use Mautic\LeadBundle\Event\ListPreProcessListEvent;
 use Mautic\LeadBundle\Helper\FormFieldHelper;
