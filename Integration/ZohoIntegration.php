@@ -1163,6 +1163,9 @@ class ZohoIntegration extends CrmAbstractIntegration
         return $this->parseZohoRecord($records, array_merge($availableFields[$object], $idField));
     }
 
+    /**
+     * @param array<int, array<string, mixed>> $fields
+     */
     private function parseZohoRecord($data, array $fields): array
     {
         $parsedData = [];
