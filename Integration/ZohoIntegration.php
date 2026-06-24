@@ -1164,7 +1164,7 @@ class ZohoIntegration extends CrmAbstractIntegration
     }
 
     /**
-     * @param array<int, array<string, mixed>> $fields
+     * @param array<mixed, mixed> $fields
      */
     private function parseZohoRecord($data, array $fields): array
     {
