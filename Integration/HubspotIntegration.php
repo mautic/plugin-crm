@@ -649,7 +649,7 @@ class HubspotIntegration extends CrmAbstractIntegration
 
         return array_filter(
             $fields,
-            function ($field) {
+            function (array $field) {
                 if (!empty($field['readOnly'])) {
                     return $field;
                 }
