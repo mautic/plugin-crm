@@ -474,7 +474,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
             ->method('getFetchQuery')
             ->with([])
             ->willReturnCallback(
-                fn () => [
+                fn (): array => [
                     'start' => '-1 week',
                     'end'   => 'now',
                 ]
@@ -517,7 +517,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
             ->method('makeRequest')
             ->with('https://sftest.com/services/data/v38.0/composite/')
             ->willReturnCallback(
-                fn () => $this->getSalesforceCompositeResponse(func_get_arg(1))
+                fn (): array => $this->getSalesforceCompositeResponse(func_get_arg(1))
             );
 
         $sf->pushLeadActivity();
