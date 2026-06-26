@@ -181,7 +181,7 @@ class HubspotIntegrationTest extends AbstractIntegrationTestCase
         $builder = $this->createMock(FormBuilderInterface::class);
         $matcher = self::exactly(2);
         $builder->expects($matcher)
-            ->method('add')->willReturnCallback(function (...$parameters) use ($matcher) {
+            ->method('add')->willReturnCallback(function (...$parameters) use ($matcher): void {
                 if (1 === $matcher->numberOfInvocations()) {
                     $this->assertSame(HubspotIntegration::ACCESS_KEY, $parameters[0]);
                     $this->assertSame(TextType::class, $parameters[1]);
