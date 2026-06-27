@@ -10,25 +10,19 @@ use Mautic\PluginBundle\Event\PluginIntegrationKeyEvent;
 use Mautic\PluginBundle\PluginEvents;
 use Mautic\PluginBundle\Tests\Integration\AbstractIntegrationTestCase;
 use MauticPlugin\MauticCrmBundle\Integration\HubspotIntegration;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class HubspotIntegrationTest extends AbstractIntegrationTestCase
 {
-    /**
-     * @var MockObject&UserHelper
-     */
-    private MockObject $userHelper;
-
     private HubspotIntegration $integration;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->userHelper  = $this->createMock(UserHelper::class);
+        $userHelper        = $this->createMock(UserHelper::class);
         $this->integration = new HubspotIntegration(
             $this->dispatcher,
             $this->cache,
@@ -46,7 +40,7 @@ class HubspotIntegrationTest extends AbstractIntegrationTestCase
             $this->integrationEntityModel,
             $this->doNotContact,
             $this->fieldsWithUniqueIdentifier,
-            $this->userHelper
+            $userHelper
         );
     }
 
