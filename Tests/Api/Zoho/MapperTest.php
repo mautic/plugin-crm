@@ -172,8 +172,8 @@ class MapperTest extends \PHPUnit\Framework\TestCase
             ],
             [
                 'id'         => 'def',
-                'First Name' => 'FirstName2',
                 'Email'      => 'zoho2@email.com',
+                'First Name' => 'FirstName2',
                 'Last Name'  => 'LastName2',
             ],
             [
