@@ -172,7 +172,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
         $sf->expects($this->exactly(2))
             ->method('getMauticContactsToUpdate')
             ->willReturnCallback(
-                function () use (&$counter) {
+                function () use (&$counter): true {
                     ++$counter;
 
                     return true;
@@ -197,7 +197,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
         $sf->expects($this->exactly(2))
             ->method('getMauticContactsToUpdate')
             ->willReturnCallback(
-                function () use (&$counter) {
+                function () use (&$counter): true {
                     ++$counter;
 
                     return true;
@@ -207,7 +207,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
         $counter = 0;
         $sf->method('getSalesforceSyncLimit')
             ->willReturnCallback(
-                function () use (&$counter) {
+                function () use (&$counter): int {
                     ++$counter;
 
                     return (1 === $counter) ? 100 : 0;
@@ -278,7 +278,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
          */
         $sf->method('getSalesforceObjectsByEmails')
             ->willReturnCallback(
-                function () {
+                function (): array {
                     $args   = func_get_args();
                     $emails = array_column($args[1], 'email');
 
@@ -304,7 +304,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
          */
         $sf->method('getSalesforceObjectsByEmails')
             ->willReturnCallback(
-                function () {
+                function (): array {
                     $args   = func_get_args();
                     $emails = array_column($args[1], 'email');
 
@@ -485,7 +485,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
         $sf->expects($this->once())
             ->method('getLeadData')
             ->willReturnCallback(
-                function () {
+                function (): array {
                     $leadIds = func_get_arg(2);
                     $data    = [];
 
@@ -536,7 +536,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
          */
         $sf->method('getSalesforceObjectsByEmails')
             ->willReturnCallback(
-                function () {
+                function (): array {
                     $args   = func_get_args();
                     $emails = array_column($args[1], 'email');
 
@@ -1000,7 +1000,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
         /* @var \PHPUnit\Framework\MockObject\MockObject $this->>dispatcher */
         $this->dispatcher->method('dispatch')
             ->willReturnCallback(
-                function () use ($sf, $integration) {
+                function () use ($sf, $integration): \Mautic\PluginBundle\Event\PluginIntegrationKeyEvent {
                     $args = func_get_args();
 
                     return match ($args[0]) {
@@ -1023,7 +1023,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
     {
         $mockRepository->method('findLeadsToUpdate')
             ->willReturnCallback(
-                function () use ($max, $specificObject) {
+                function () use ($max, $specificObject): array {
                     $args   = func_get_args();
                     $object = $args[6];
 
@@ -1051,7 +1051,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
     {
         $mockRepository->method('findLeadsToCreate')
             ->willReturnCallback(
-                function () use ($max) {
+                function () use ($max): int|array {
                     $args = func_get_args();
 
                     if (false === $args[2]) {
