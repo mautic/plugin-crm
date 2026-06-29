@@ -1000,7 +1000,7 @@ class SalesforceIntegrationTest extends AbstractIntegrationTestCase
         /* @var \PHPUnit\Framework\MockObject\MockObject $this->>dispatcher */
         $this->dispatcher->method('dispatch')
             ->willReturnCallback(
-                function () use ($sf, $integration): \Mautic\PluginBundle\Event\PluginIntegrationKeyEvent {
+                function () use ($sf, $integration): PluginIntegrationKeyEvent {
                     $args = func_get_args();
 
                     return match ($args[0]) {
