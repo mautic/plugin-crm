@@ -139,10 +139,10 @@ class CrmAbstractIntegrationTest extends AbstractIntegrationTestCase
         $this->assertSame($result, $string);
 
         $result = $methodLimitString->invokeArgs($integration, [true, 'text']);
-        $this->assertSame(true, $result);
+        $this->assertTrue($result);
 
         $result = $methodLimitString->invokeArgs($integration, [false, 'text']);
-        $this->assertSame(false, $result);
+        $this->assertFalse($result);
 
         $result = $methodLimitString->invokeArgs($integration, [[1, 2, 3]]);
         $this->assertSame($result, [1, 2, 3]);
