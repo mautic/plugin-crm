@@ -2296,9 +2296,6 @@ class SalesforceIntegration extends CrmAbstractIntegration
         }
     }
 
-    /**
-     * @return bool|mixed|string
-     */
     protected function setContactToSync(&$checkEmailsInSF, $lead): false|string
     {
         $key = $this->getSyncKey($lead['email']);

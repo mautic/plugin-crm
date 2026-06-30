@@ -620,9 +620,6 @@ class SalesforceApi extends CrmApi
         return isset($matches[1]) ? [$matches[1], $matches[2]] : [null, null];
     }
 
-    /**
-     * @return bool|float|mixed|string
-     */
     private function escapeQueryValue(string $value): string
     {
         // SF uses backslashes as escape delimeter
